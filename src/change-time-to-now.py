@@ -19,12 +19,7 @@ def _warning():
 		print('ERR: change time to now failed unexpectedly')
 		print('ERR: Warning: Time might not be now!!')
 
-def _welcome():
-	print('Change time to now v0.0.1-10')
-	print('')
-
 def main():
-	_welcome()
 	funcs = (_success, _failure, _warning)
 
 	random.choice(funcs)()
