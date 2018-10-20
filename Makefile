@@ -1,10 +1,11 @@
 all: docker
 
-docker:
-	docker build -t dovdor/change-time-to-now:latest -f build/Dockerfile .
+clean:
+	find . -iname "*.pyc" -o -iname "*~" -delete
+	-rm .docker.touch
 
-run-docker: docker
-	docker run --rm -t dovdor/change-time-to-now:latest
+docker: .docker.touch
 
-run:
-	python src/ctn.py
+.docker.touch: build/Dockerfile src/ctn.py
+	docker build -t dovdor/change-time-to-now:latest -f $< .
+	touch $@
