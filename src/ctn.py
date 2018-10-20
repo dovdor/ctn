@@ -1,4 +1,4 @@
-import sys
+import click
 import random
 
 VERSION = '1.0.0-442'
@@ -25,6 +25,7 @@ def _welcome_message():
     print('ChangeTimeToNow v{0}'.format(VERSION))
     print('')
 
+@click.command()
 def main():
     _welcome_message()
     funcs = (_success, _failure, _warning)
@@ -32,4 +33,4 @@ def main():
     random.choice(funcs)()
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()
