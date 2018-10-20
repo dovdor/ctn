@@ -1,6 +1,8 @@
 import sys
 import random
 
+VERSION = '1.0.0-442'
+
 def _success():
     print('INFO: change time to now completed successfully!')
     print('INFO: time IS now')
@@ -19,7 +21,12 @@ def _warning():
         print('ERR: change time to now failed unexpectedly')
         print('ERR: Warning: Time might not be now!!')
 
+def _welcome_message():
+    print('ChangeTimeToNow v{0}'.format(VERSION))
+    print('')
+
 def main():
+    _welcome_message()
     funcs = (_success, _failure, _warning)
 
     random.choice(funcs)()
