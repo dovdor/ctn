@@ -23,12 +23,17 @@ def _warning():
         print('ERR: Warning: Time might not be now!!')
 
 def _welcome_message():
-    print('ChangeTimeToNow v{0}'.format(VERSION))
+    print('ChangeTimeToNow(tm) v{0}'.format(VERSION))
     print('')
+
+def _prompt_confirm():
+    print('ChangeTimeToNow will change time to NOW!')
+    click.confirm('are you sure you want to continue?', abort=True)
 
 @click.command()
 def main():
     _welcome_message()
+    _prompt_confirm()
     funcs = (_success, _failure, _warning)
 
     random.choice(funcs)()
