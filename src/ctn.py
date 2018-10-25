@@ -26,14 +26,19 @@ def _welcome_message():
     print('ChangeTimeToNow(tm) v{0}'.format(VERSION))
     print('')
 
-def _prompt_confirm():
+def _prompt_confirm(force):
     print('ChangeTimeToNow will change time to NOW!')
+    if force:
+	print('forced...')
+	return
+
     click.confirm('are you sure you want to continue?', abort=True)
 
 @click.command()
-def main():
+@click.option('--force', is_flag=True, help='force time change to now')
+def main(force):
     _welcome_message()
-    _prompt_confirm()
+    _prompt_confirm(force)
     funcs = (_success, _failure, _warning)
 
     random.choice(funcs)()
